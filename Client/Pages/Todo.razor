@@ -1,0 +1,48 @@
+@page "/Todo"
+
+
+
+
+<Addons>
+    <Addon AddonType="AddonType.Body">
+        <TextEdit Placeholder="Todo" @bind-Text = "newTodo" />
+    </Addon>
+    <Addon AddonType="AddonType.End">
+        <Button Color="Color.Secondary" @onclick = "AddTask">Add</Button>
+    </Addon>
+</Addons>
+
+<ol>
+
+@foreach (var item in listaTodo)
+{
+    <li>
+
+    <input type="checkbox" @bind="item.feito">
+
+    <p>Para fazer: @item.titulo</p> 
+
+    </li>
+}
+
+</ol>
+
+
+@code{
+    List<Afazer> listaTodo;
+    public string newTodo { get; set; }
+    private void AddTask()
+    {
+        listaTodo.Add(new Afazer { titulo = newTodo });
+    }
+    protected override void OnInitialized()
+    { //método executado quando um arquivo razor é carregado
+        listaTodo = new List<Afazer>(){
+        new Afazer(){titulo = "Passear com cachorro", feito = false},
+        new Afazer(){titulo = "Comprar coisas", feito = false},
+        new Afazer(){titulo = "Pagar conta", feito = true}
+        };
+    }
+
+}
+    

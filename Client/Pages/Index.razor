@@ -1,0 +1,34 @@
+﻿@page "/"
+@using Helpers;
+
+
+<Check TValue="bool" @bind-Checked="@ToDo">ToDo</Check>
+
+@code{
+    bool ToDo;
+}
+
+<Button Color="Color.Danger">Danger</Button>
+
+<br>
+
+<Button Color="Color.Success">Success</Button>
+
+<Dropdown>
+    <DropdownToggle Color="Color.Primary">
+        Dropdown
+    </DropdownToggle>
+    <DropdownMenu>
+        <DropdownItem>Action</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem>Another Action</DropdownItem>
+    </DropdownMenu>
+</Dropdown>
+
+<br>
+
+<RadioGroup TValue="string" Name="colors">
+    <Radio TValue="string" Value="@("red")">Red</Radio>
+    <Radio TValue="string" Value="@("green")">Green</Radio>
+    <Radio TValue="string" Value="@("blue")">Blue</Radio>
+</RadioGroup>
